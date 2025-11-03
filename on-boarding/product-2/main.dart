@@ -71,8 +71,8 @@ class ProductManager {
     stdout.write('Enter description: ');
     String description = stdin.readLineSync()!.trim();
 
-    stdout.write('Enter price: ');
-    double price = double.parse(stdin.readLineSync()!);
+    // stdout.write('Enter price: ');
+    double price = readValidPrice();
 
     Product newProduct = Product(name, description, price);
     products[name] = newProduct;
@@ -116,8 +116,8 @@ class ProductManager {
     stdout.write('Enter new description: ');
     String description = stdin.readLineSync()!.trim();
 
-    stdout.write('Enter new price: ');
-    double price = double.parse(stdin.readLineSync()!);
+    // stdout.write('Enter new price: ');
+    double price = readValidPrice();
 
     // Remove old key if name changed
     if (oldName != newName) products.remove(oldName);
@@ -136,5 +136,29 @@ class ProductManager {
 
     products.remove(name);
     return 'Product "$name" deleted successfully!';
+  }
+}
+
+// a method for price input validation 
+double readValidPrice() {
+  while (true) {
+    stdout.write('Enter price: ');
+    String? input = stdin.readLineSync();
+
+    if (input == null || input.trim().isEmpty) {
+      print(' Price cannot be empty.');
+      continue;
+    }
+
+    try {
+      double price = double.parse(input);
+      if (price < 0) {
+        print(' Price cannot be negative.');
+        continue;
+      }
+      return price;
+    } catch (e) {
+      print(' Invalid input. Please enter a valid number.');
+    }
   }
 }
