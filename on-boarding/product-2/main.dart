@@ -1,9 +1,9 @@
 import 'dart:collection';
 import 'dart:io';
 
-void main(){
+void main() {
   ProductManager manager = ProductManager();
-  while (true){
+  while (true) {
     print('\nChoose an option:');
     print('1: Add product');
     print('2: View specific product');
@@ -14,30 +14,28 @@ void main(){
     stdout.write('Enter your choice: ');
 
     String? entered = stdin.readLineSync();
-  switch (entered) {
-    
-    case ('1'):
-      manager.addProduct();
-      break;
-    case ('2'):
-      print(manager.showOneProduct());
-      break;
-    case ('3'):
-      manager.showAllProducts();
-      break;
-    case ('4'):
-       print(manager.editProduct());
-       break;
-    case ('5'):
-      manager.deleteProduct();
-      break;
-    case ('6'):
-      print('Exiting the program');
-      return;
-    default:
-      print('Invalid Choice, enter the correct choice again');
-
-  } 
+    switch (entered) {
+      case ('1'):
+        print(manager.addProduct());
+        break;
+      case ('2'):
+        print(manager.showOneProduct());
+        break;
+      case ('3'):
+        manager.showAllProducts();
+        break;
+      case ('4'):
+        print(manager.editProduct());
+        break;
+      case ('5'):
+        print(manager.deleteProduct());
+        break;
+      case ('6'):
+        print('Exiting the program');
+        return;
+      default:
+        print('Invalid Choice, enter the correct choice again');
+    }
   }
 }
 
@@ -50,12 +48,10 @@ class Product {
 
   @override
   String toString() {
-    return 'Name: $name | Description: $description | Price: $price';
+    // Format price with 2 decimal places
+    return 'Name: $name | Description: $description | Price: \$${price.toStringAsFixed(2)}';
   }
 }
-
-
-
 
 class ProductManager {
   Map<String, Product> products = HashMap();
@@ -64,29 +60,25 @@ class ProductManager {
     stdout.write('Enter product name: ');
     String name = stdin.readLineSync()!.trim();
 
-    if (products.containsKey(name)) {
-      return 'Product "$name" already exists.';
-    }
+    if (name.isEmpty) return '❌ Product name cannot be empty.';
+    if (products.containsKey(name)) return 'Product "$name" already exists.';
 
     stdout.write('Enter description: ');
     String description = stdin.readLineSync()!.trim();
 
-    stdout.write('Enter price: ');
-    double price = double.parse(stdin.readLineSync()!);
+    double price = readValidPrice();
 
     Product newProduct = Product(name, description, price);
     products[name] = newProduct;
 
-    return 'Product "$name" added successfully!';
+    return '✅ Product "$name" added successfully!';
   }
 
   String showOneProduct() {
     stdout.write('Enter product name to view: ');
     String name = stdin.readLineSync()!.trim();
 
-    if (!products.containsKey(name)) {
-      return 'Product "$name" does not exist.';
-    }
+    if (!products.containsKey(name)) return 'Product "$name" does not exist.';
 
     return products[name]!.toString();
   }
@@ -105,9 +97,7 @@ class ProductManager {
     stdout.write('Enter product name to edit: ');
     String oldName = stdin.readLineSync()!.trim();
 
-    if (!products.containsKey(oldName)) {
-      return 'Product "$oldName" does not exist.';
-    }
+    if (!products.containsKey(oldName)) return 'Product "$oldName" does not exist.';
 
     stdout.write('Enter new name (or press Enter to keep "$oldName"): ');
     String newName = stdin.readLineSync()!.trim();
@@ -116,25 +106,45 @@ class ProductManager {
     stdout.write('Enter new description: ');
     String description = stdin.readLineSync()!.trim();
 
-    stdout.write('Enter new price: ');
-    double price = double.parse(stdin.readLineSync()!);
+    double price = readValidPrice();
 
-    // Remove old key if name changed
     if (oldName != newName) products.remove(oldName);
-
     products[newName] = Product(newName, description, price);
-    return 'Product "$newName" updated successfully!';
+
+    return '✅ Product "$newName" updated successfully!';
   }
 
   String deleteProduct() {
     stdout.write('Enter product name to delete: ');
     String name = stdin.readLineSync()!.trim();
 
-    if (!products.containsKey(name)) {
-      return 'Product "$name" does not exist.';
-    }
+    if (!products.containsKey(name)) return 'Product "$name" does not exist.';
 
     products.remove(name);
-    return 'Product "$name" deleted successfully!';
+    return '🗑️ Product "$name" deleted successfully!';
+  }
+}
+
+// Price input validation
+double readValidPrice() {
+  while (true) {
+    stdout.write('Enter price: ');
+    String? input = stdin.readLineSync();
+
+    if (input == null || input.trim().isEmpty) {
+      print(' Price cannot be empty.');
+      continue;
+    }
+
+    try {
+      double price = double.parse(input);
+      if (price < 0) {
+        print(' Price cannot be negative.');
+        continue;
+      }
+      return price;
+    } catch (e) {
+      print(' Invalid input. Please enter a valid number.');
+    }
   }
 }
