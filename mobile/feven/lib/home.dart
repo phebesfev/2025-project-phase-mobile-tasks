@@ -1,3 +1,4 @@
+import 'package:feven/add_product.dart';
 import 'package:feven/details.dart';
 import 'package:flutter/material.dart';
 
@@ -165,6 +166,20 @@ class HomePage extends StatelessWidget {
             // the above marks the end of the whole children of the screen
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          
+          
+          onPressed: ()  {
+            Navigator.of(context).push(
+              MaterialPageRoute<void>(
+                builder: (context) => const AddProduct(),
+              ),
+            );
+          },
+          backgroundColor: Colors.blue,
+          child: Icon(Icons.add,color: Colors.white,size: 30,))
+        
+
       ),
     );
   }
