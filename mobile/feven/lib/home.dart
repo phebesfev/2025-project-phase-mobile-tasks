@@ -1,7 +1,9 @@
+import 'package:feven/details.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+  final len = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +18,26 @@ class HomePage extends StatelessWidget {
               automaticallyImplyLeading: false,
               title: Row(
                 children: [
+                  
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: Image.network(
-                      'https://plus.unsplash.com/premium_photo-1668800128890-bc8d2bf9af7e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
-                    ),
+                    
+                    
+                      
+                      
+                        
+                        child: Image.network(
+                          
+                          
+                          'https://plus.unsplash.com/premium_photo-1668800128890-bc8d2bf9af7e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170',
+                          
+                          width: 50,
+                        
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                      
+                    
                   ),
                   SizedBox(width: 20),
                   Container(
@@ -114,40 +128,35 @@ class HomePage extends StatelessWidget {
                 ],
               ),
 
-              // second colmn,replace it with our cards
-              SizedBox(height: 8),
-              SizedBox(
-                width: 466,
-                height:255 ,
-                child: Card(
-                  child: Column(
-                    // first column(the image)
-                    children: [
-                      Image.network('https://media.istockphoto.com/id/1350560575/photo/pair-of-blue-running-sneakers-on-white-background-isolated.jpg?s=612x612&w=0&k=20&c=A3w_a9q3Gz-tWkQL6K00xu7UHdN5LLZefzPDp-wNkSU=',
-                      height: 160,
-                      width: 466
+              
+              // SizedBox(height: 8),
+              
+              //our cards
+              Expanded(
                 
-                      ),
-                      // second column (the name and price)
-                      Row(
-                        children: [
-                          Text('Derby leather Shoes'),
-                          Text('\$120'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text('Men\'s shoe'),
-                          Icon(Icons.star),
-                          Text('4.0')
-                        ],
-                      ),
+               
                 
-                    ]
-                    
-                  ),
+                
+                child: ListView(
+                  padding: EdgeInsets.all(15),
+                  children: [
+                    MyCard(),
+                    SizedBox(height: 8,),
+                    MyCard(),
+                    SizedBox(height: 8,),
+                    MyCard(),
+                  ],
+                  // padding: EdgeInsets.all(2),
+                  // itemCount: len,
+                  // itemBuilder: (BuildContext context, int index) {
+                  //   return  ;
+                
+                  // }
+                 
                 ),
-              ),
+              )
+             
+         
               
             
             
@@ -157,6 +166,94 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+
+class MyCard extends StatelessWidget {
+  const MyCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  InkWell(
+      // I used inkwell so that I can use ontap functions on my card
+      onTap:()  {
+        Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (context) => const Details(),
+          ),
+        );
+      },
+      child: SizedBox(
+                  
+                  child: Card(
+                    child: Column(
+                      // first column(the image)
+                      children: [
+                        Image.asset('assets/images/men_shoe.png',
+                        height: 140,
+                        width: double.infinity,
+                        fit: BoxFit.fill,
+                  
+                        ),
+                        // second column (the name and price)
+                        Container(
+                          padding: EdgeInsets.all(13),
+      
+                          child:Column(
+                            children: [
+                              Row(
+                                
+                                children: [
+                                Text(
+                                  'Derby leather Shoes',
+                                  style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                                  
+                                  ),
+                                  
+                                SizedBox(width: 217),
+                                
+                                Text(
+                                  '\$120',
+                                  style: TextStyle(fontWeight: FontWeight.bold,)
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 7),
+                          
+                              Row(
+                                children: [
+                                  Text('Men\'s shoe',
+                                  style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 13,
+                                ),
+                                  ),
+                                  SizedBox(width: 325),
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 13,),
+                                  Text('4.0',
+                                  style: TextStyle(
+                                    fontSize: 13
+                                  ),)
+                                ],
+                              ),
+      
+                            ],
+                          ),
+                          
+                        )
+                          
+                  
+                      ]
+                      
+                    ),
+                  ),
+                 
+                ),
     );
   }
 }
