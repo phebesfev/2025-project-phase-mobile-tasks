@@ -1,5 +1,6 @@
 import 'package:feven/add_product.dart';
 import 'package:feven/details.dart';
+import 'package:feven/search_product.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -119,9 +120,14 @@ class HomePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(right:20),
                     child: IconButton(
+                      // navigate to search page
                       onPressed: () {
-                        print('search clicked');
-                      },
+                        Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (context) => const SearchProduct(),
+                          ),
+                        );
+                        },
                       icon: Icon(Icons.search),
                       iconSize: 30,
                     ),
