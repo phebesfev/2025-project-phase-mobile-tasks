@@ -10,7 +10,7 @@ flutter run
 ## Screenshots
 
 <p align="center">
-  <img src="screenshots/home-page.jpg.png" width="23%" />
+  <img src="screenshots/home-page.jpg" width="23%" />
   <img src="screenshots/details-page.jpg" width="23%" />
   <img src="screenshots/add-product.jpg" width="23%" />
   <img src="screenshots/search-product.jpg" width="23%" />
