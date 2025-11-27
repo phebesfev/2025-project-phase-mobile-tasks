@@ -97,7 +97,8 @@ class ProductManager {
     stdout.write('Enter product name to edit: ');
     String oldName = stdin.readLineSync()!.trim();
 
-    if (!products.containsKey(oldName)) return 'Product "$oldName" does not exist.';
+    if (!products.containsKey(oldName))
+      return 'Product "$oldName" does not exist.';
 
     stdout.write('Enter new name (or press Enter to keep "$oldName"): ');
     String newName = stdin.readLineSync()!.trim();
