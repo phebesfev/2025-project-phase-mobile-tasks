@@ -1,5 +1,8 @@
 import 'package:feven/home.dart';
 import 'package:flutter/material.dart';
+import 'details.dart';
+import 'add_product.dart';
+import 'search_product.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,11 +13,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: HomePage()
-      ),
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: HomePage(),
+        routes: {
+          '/home':(context) => const HomePage(),
+          '/details': (context) => const Details(),
+          '/add': (context) => const AddProduct(),
+          '/search':(context) => const SearchProduct(),
+
+          },
+);
+
   }
 }
