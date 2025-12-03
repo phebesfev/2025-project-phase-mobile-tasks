@@ -23,7 +23,7 @@ class SearchProduct extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: BackButton(
                       onPressed: (){
-                        print('implement the back button functinality');
+                        Navigator.pop(context);
                       },
                     ),)
                 ],
@@ -88,9 +88,9 @@ class SearchProduct extends StatelessWidget {
                Expanded(
                 child: ListView(
                   children: [
-                    MyCard(),
-                    SizedBox(height: 20),
-                    MyCard(),
+                    // MyCard(),
+                    // SizedBox(height: 20),
+                    // MyCard(),
                     SizedBox(height: 20),
                   ],
                 ),
