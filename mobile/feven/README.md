@@ -23,3 +23,23 @@ In this task I implemented app routing using named routes and demonstrates passi
 
 Configured named routes in MaterialApp.
 Using named routes to pass data from the add page to the home page.
+
+# Submission — Task 9 — Domain Layer Refactoring
+
+This task refactors the domain layer of the eCommerce app using Clean Architecture principles.
+
+## Features implemented
+
+Product Entity: id, name, description, imageUrl, price.
+
+ProductRepository (abstract): defines CRUD methods (getAllProducts, getProductById, createProduct, updateProduct, deleteProduct).
+
+Use Cases: ViewAllProductsUsecase, ViewProductUsecase, CreateProductUsecase, UpdateProductUsecase, DeleteProductUsecase.
+
+## Key Points
+
+Use cases call the repository interface only.
+
+Domain layer is independent of API or DB.
+
+Ensures clean separation of concerns and testability.
