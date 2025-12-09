@@ -15,3 +15,11 @@ flutter run
   <img src="screenshots/add-product.jpg" width="23%" />
   <img src="screenshots/search-product.jpg" width="23%" />
 </p>
+
+# Submission — Task 7
+In this task I implemented app routing using named routes and demonstrates passing data from the Add page back to the Home page.
+
+## Features implemented
+
+Configured named routes in MaterialApp.
+Using named routes to pass data from the add page to the home page.
