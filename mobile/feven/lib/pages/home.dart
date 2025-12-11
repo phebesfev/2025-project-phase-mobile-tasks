@@ -1,6 +1,6 @@
-import 'package:feven/add_product.dart';
-import 'package:feven/details.dart';
-import 'package:feven/search_product.dart';
+import 'package:feven/pages/add_product.dart';
+import 'package:feven/pages/details.dart';
+import 'package:feven/pages/search_product.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
