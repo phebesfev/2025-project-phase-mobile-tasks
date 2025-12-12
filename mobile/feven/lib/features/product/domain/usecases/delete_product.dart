@@ -1,4 +1,4 @@
-import 'package:feven/domain/repositories/product_repositories.dart';
+import 'package:feven/features/product/domain/repositories/product_repositories.dart';
 
 class DeleteProductUsecase{
 
