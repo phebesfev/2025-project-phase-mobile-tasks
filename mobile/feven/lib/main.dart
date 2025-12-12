@@ -1,8 +1,8 @@
-import 'package:feven/home.dart';
+import 'package:feven/pages/home.dart';
 import 'package:flutter/material.dart';
-import 'details.dart';
-import 'add_product.dart';
-import 'search_product.dart';
+import 'pages/details.dart';
+import 'pages/add_product.dart';
+import 'pages/search_product.dart';
 
 void main() {
   runApp(const MainApp());

@@ -43,3 +43,27 @@ Use cases call the repository interface only.
 Domain layer is independent of API or DB.
 
 Ensures clean separation of concerns and testability.
+
+ # Submission — Task 10 — Data Overview Layer
+
+This task implements the data layer of the eCommerce app using Clean Architecture principles, including JSON serialization and unit testing.
+
+## Features implemented
+
+ProductModel: mirrors the Product entity and handles JSON conversion (fromJson and toJson).
+
+Data Layer Structure: organized inside features/product/data/ with models, repository implementations, and data sources.
+
+Unit Tests: verify correct conversion between JSON and ProductModel, ensuring robustness against API changes.
+
+## Key Points
+
+Models act as adapters between API JSON and domain entities.
+
+Domain layer remains independent of API or storage logic.
+
+Safe type conversions handle differences in API data (e.g., int vs double, string vs int).
+
+Ensures clean separation of concerns and testable code.
+
+Supports modular, feature-based folder structure for maintainability and scalability.

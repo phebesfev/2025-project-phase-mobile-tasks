@@ -1,4 +1,4 @@
-import 'package:feven/domain/entity/product.dart';
+import 'package:feven/features/product/domain/entity/product.dart';
 
 abstract class ProductRepository {
     Future<List<Product>>   getAllProducts();
