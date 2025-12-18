@@ -1,9 +1,11 @@
+import 'package:dartz/dartz.dart';
+import 'package:feven/core/error/failures.dart';
 import 'package:feven/features/product/domain/entity/product.dart';
 
 abstract class ProductRepository {
-    Future<List<Product>>   getAllProducts();
-    Future<Product> getProductById(int id);
-    Future<void> createProduct(Product product);
-    Future<void> updateProduct(Product product);
-    Future<void> deleteProduct(int id);
+    Future<Either<Failure, List<Product>>> getAllProducts();
+    Future<Either<Failure, Product>> getProductById(int id);
+    Future<Either<Failure, void>> createProduct(Product product);
+    Future<Either<Failure, void>> updateProduct(Product product);
+    Future<Either<Failure, void>> deleteProduct(int id);
 }
