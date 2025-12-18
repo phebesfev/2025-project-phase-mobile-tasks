@@ -7,7 +7,7 @@ class ViewProductsUsecase{
 
   ViewProductsUsecase(this.repository);
 
-  Future<Product> call(String id) async{
+  Future<Product> call(int id) async{
     return await repository.getProductById(id);
   }
 
